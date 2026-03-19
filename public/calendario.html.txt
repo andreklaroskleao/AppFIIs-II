@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIIs App | Calendário</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <span class="brand-badge">F</span>
+      <div>
+        <h1>FIIs App</h1>
+        <small>Calendário de dividendos</small>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./fiis.html">FIIs</a>
+      <a href="./carteira.html">Carteira</a>
+      <a href="./calendario.html" class="active">Calendário</a>
+      <a href="./login.html" id="nav-login-link">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <h2>Calendário de dividendos</h2>
+      <p>Veja datas-com e pagamentos previstos dos fundos cadastrados.</p>
+    </section>
+
+    <section class="toolbar toolbar-grid">
+      <input type="text" id="calendar-search" placeholder="Filtrar por ticker" />
+      <select id="calendar-month">
+        <option value="">Todos os meses</option>
+      </select>
+    </section>
+
+    <section class="table-wrapper">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Segmento</th>
+            <th>Data com</th>
+            <th>Pagamento</th>
+            <th>Dividendo/cota</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Base demonstrativa para acompanhamento e organização pessoal.</p>
+  </footer>
+
+  <script type="module" src="./js/calendario.js"></script>
+</body>
+</html>

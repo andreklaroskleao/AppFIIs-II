@@ -1,0 +1,80 @@
+[
+  },
+  {
+    "ticker": "MXRF11",
+    "name": "Maxi Renda",
+    "segment": "Papel",
+    "price": 10.32,
+    "dy": 1.04,
+    "pvp": 0.98,
+    "lastDividend": 0.1,
+    "paymentDate": "2026-03-20",
+    "comDate": "2026-02-29"
+  },
+  {
+    "ticker": "KNRI11",
+    "name": "Kinea Renda Imobiliária",
+    "segment": "Híbrido",
+    "price": 147.8,
+    "dy": 0.79,
+    "pvp": 0.95,
+    "lastDividend": 1,
+    "paymentDate": "2026-03-14",
+    "comDate": "2026-02-28"
+  },
+  {
+    "ticker": "VISC11",
+    "name": "Vinci Shopping Centers",
+    "segment": "Shoppings",
+    "price": 118.2,
+    "dy": 0.86,
+    "pvp": 0.93,
+    "lastDividend": 0.92,
+    "paymentDate": "2026-03-18",
+    "comDate": "2026-02-28"
+  },
+  {
+    "ticker": "XPLG11",
+    "name": "XP Log",
+    "segment": "Logística",
+    "price": 104.56,
+    "dy": 0.88,
+    "pvp": 0.91,
+    "lastDividend": 0.78,
+    "paymentDate": "2026-03-17",
+    "comDate": "2026-02-28"
+  },
+  {
+    "ticker": "HGRE11",
+    "name": "CSHG Real Estate",
+    "segment": "Lajes Corporativas",
+    "price": 123.9,
+    "dy": 0.72,
+    "pvp": 0.82,
+    "lastDividend": 0.88,
+    "paymentDate": "2026-03-19",
+    "comDate": "2026-02-28"
+  },
+  {
+    "ticker": "BTLG11",
+    "name": "BTG Logística",
+    "segment": "Logística",
+    "price": 99.45,
+    "dy": 0.95,
+    "pvp": 0.97,
+    "lastDividend": 0.74,
+    "paymentDate": "2026-03-12",
+    "comDate": "2026-02-28"
+  },
+  {
+    "ticker": "RBRR11",
+    "name": "RBR Rendimento High Grade",
+    "segment": "Papel",
+    "price": 83.5,
+    "dy": 1.02,
+    "pvp": 0.9,
+    "lastDividend": 0.85,
+    "paymentDate": "2026-03-16",
+    "comDate": "2026-02-28"
+  }
+]

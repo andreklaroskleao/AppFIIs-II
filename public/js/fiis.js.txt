@@ -1,0 +1,67 @@
+import { auth, db } from './firebase-config.js';
+
+  const ref = doc(db, `users/${currentUser.uid}/favorites`, ticker);
+
+  if (favoriteTickers.has(ticker)) {
+    await deleteDoc(ref);
+    favoriteTickers.delete(ticker);
+  } else {
+    await setDoc(ref, {
+      ticker,
+      createdAt: new Date().toISOString()
+    });
+    favoriteTickers.add(ticker);
+  }
+
+  applyFilters();
+}
+
+function renderFiis(fiis) {
+  if (!fiisList) return;
+
+  fiisList.innerHTML = fiis.map((fii) => {
+    const isFavorite = favoriteTickers.has(fii.ticker);
+
+    return `
+      <article class="card">
+        <h3>${fii.ticker}</h3>
+        <p>${fii.name}</p>
+        <p>Segmento: ${fii.segment}</p>
+        <p>Preço: ${formatCurrency(fii.price)}</p>
+        <p>DY: ${fii.dy}%</p>
+        <p>P/VP: ${fii.pvp}</p>
+        <p>Último dividendo: ${formatCurrency(fii.lastDividend)}</p>
+        <button class="btn btn-secondary favorite-btn" data-ticker="${fii.ticker}">
+          ${isFavorite ? 'Remover favorito' : 'Favoritar'}
+        </button>
+      </article>
+    `;
+  }).join('');
+
+  document.querySelectorAll('.favorite-btn').forEach((button) => {
+    button.addEventListener('click', () => toggleFavorite(button.dataset.ticker));
+  });
+}
+
+async function init() {
+  allFiis = await getFiisData();
+  fillSegmentOptions(allFiis);
+  applyFilters();
+}
+
+searchInput?.addEventListener('input', applyFilters);
+segmentFilter?.addEventListener('change', applyFilters);
+sortFilter?.addEventListener('change', applyFilters);
+
+onAuthStateChanged(auth, async (user) => {
+  currentUser = user;
+  favoriteTickers = new Set();
+
+  if (user) {
+    await loadFavorites(user.uid);
+  }
+
+  applyFilters();
+});
+
+init().catch(console.error);

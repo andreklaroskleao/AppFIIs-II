@@ -1,0 +1,47 @@
+import { auth, googleProvider } from './firebase-config.js';
+import {
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged
+} from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+import { showMessage, hideElement } from './utils.js';
+
+const loginButton = document.getElementById('google-login-btn');
+const logoutButton = document.getElementById('logout-btn');
+const authMessage = document.getElementById('auth-message');
+const userInfo = document.getElementById('user-info');
+
+if (loginButton) {
+  loginButton.addEventListener('click', async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      showMessage(authMessage, 'Login realizado com sucesso.', 'success');
+    } catch (error) {
+      showMessage(authMessage, `Erro ao entrar: ${error.message}`, 'error');
+    }
+  });
+}
+
+if (logoutButton) {
+  logoutButton.addEventListener('click', async () => {
+    try {
+      await signOut(auth);
+      showMessage(authMessage, 'Logout realizado.', 'success');
+    } catch (error) {
+      showMessage(authMessage, `Erro ao sair: ${error.message}`, 'error');
+    }
+  });
+}
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    userInfo.textContent = `Conectado como ${user.displayName || user.email}`;
+    userInfo.classList.remove('hidden');
+    loginButton?.classList.add('hidden');
+    logoutButton?.classList.remove('hidden');
+  } else {
+    hideElement(userInfo);
+    logoutButton?.classList.add('hidden');
+    loginButton?.classList.remove('hidden');
+  }
+});

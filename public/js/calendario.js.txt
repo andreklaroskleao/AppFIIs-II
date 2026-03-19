@@ -1,0 +1,56 @@
+import { getFiisData, formatCurrency, formatDate } from './utils.js';
+
+const calendarBody = document.getElementById('calendar-body');
+const calendarSearch = document.getElementById('calendar-search');
+const calendarMonth = document.getElementById('calendar-month');
+
+let allFiis = [];
+
+function fillMonths() {
+  const months = [
+    '01', '02', '03', '04', '05', '06',
+    '07', '08', '09', '10', '11', '12'
+  ];
+
+  calendarMonth.innerHTML = '<option value="">Todos os meses</option>' + months.map((month) => {
+    return `<option value="${month}">${month}</option>`;
+  }).join('');
+}
+
+function renderTable(data) {
+  if (!calendarBody) return;
+
+  calendarBody.innerHTML = data.map((fii) => `
+    <tr>
+      <td>${fii.ticker}</td>
+      <td>${fii.segment}</td>
+      <td>${formatDate(fii.comDate)}</td>
+      <td>${formatDate(fii.paymentDate)}</td>
+      <td>${formatCurrency(fii.lastDividend)}</td>
+    </tr>
+  `).join('');
+}
+
+function applyFilters() {
+  const query = calendarSearch.value.trim().toLowerCase();
+  const month = calendarMonth.value;
+
+  const filtered = allFiis.filter((item) => {
+    const tickerMatch = item.ticker.toLowerCase().includes(query);
+    const monthMatch = !month || item.paymentDate.slice(5, 7) === month;
+    return tickerMatch && monthMatch;
+  }).sort((a, b) => new Date(a.paymentDate) - new Date(b.paymentDate));
+
+  renderTable(filtered);
+}
+
+async function init() {
+  allFiis = await getFiisData();
+  fillMonths();
+  applyFilters();
+}
+
+calendarSearch?.addEventListener('input', applyFilters);
+calendarMonth?.addEventListener('change', applyFilters);
+
+init().catch(console.error);

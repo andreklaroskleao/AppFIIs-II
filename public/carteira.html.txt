@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIIs App | Carteira</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <span class="brand-badge">F</span>
+      <div>
+        <h1>FIIs App</h1>
+        <small>Área privada do investidor</small>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./fiis.html">FIIs</a>
+      <a href="./carteira.html" class="active">Carteira</a>
+      <a href="./calendario.html">Calendário</a>
+      <a href="./login.html" id="nav-login-link">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <h2>Minha carteira</h2>
+      <p>Adicione posições e acompanhe o total investido e renda estimada.</p>
+    </section>
+
+    <section id="auth-warning" class="message warning hidden">
+      Faça login para salvar sua carteira no Firebase.
+    </section>
+
+    <section class="panel form-panel">
+      <h3>Adicionar posição</h3>
+      <form id="portfolio-form" class="form-grid">
+        <input type="text" id="ticker" placeholder="Ticker ex: HGLG11" required />
+        <input type="number" id="quantity" placeholder="Quantidade" min="1" required />
+        <input type="number" step="0.01" id="avgPrice" placeholder="Preço médio" min="0" required />
+        <button class="btn btn-primary" type="submit">Salvar posição</button>
+      </form>
+    </section>
+
+    <section class="stats-grid" id="portfolio-stats"></section>
+
+    <section>
+      <div class="section-header">
+        <h2>Posições cadastradas</h2>
+      </div>
+      <div class="cards-grid" id="portfolio-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Os cálculos são estimativos e dependem da base de dados cadastrada.</p>
+  </footer>
+
+  <script type="module" src="./js/carteira.js"></script>
+</body>
+</html>

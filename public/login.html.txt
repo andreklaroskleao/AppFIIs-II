@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIIs App | Login</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <span class="brand-badge">F</span>
+      <div>
+        <h1>FIIs App</h1>
+        <small>Autenticação com Firebase</small>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./fiis.html">FIIs</a>
+      <a href="./carteira.html">Carteira</a>
+      <a href="./calendario.html">Calendário</a>
+      <a href="./login.html" class="active" id="nav-login-link">Login</a>
+    </nav>
+  </header>
+
+  <main class="container narrow-container">
+    <section class="panel auth-panel">
+      <h2>Entrar</h2>
+      <p>Faça login com Google para salvar carteira e favoritos.</p>
+
+      <div id="user-info" class="message success hidden"></div>
+      <div id="auth-message" class="message hidden"></div>
+
+      <div class="auth-actions">
+        <button id="google-login-btn" class="btn btn-primary">Entrar com Google</button>
+        <button id="logout-btn" class="btn btn-secondary hidden">Sair</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Login seguro com Firebase Authentication.</p>
+  </footer>
+
+  <script type="module" src="./js/auth.js"></script>
+</body>
+</html>

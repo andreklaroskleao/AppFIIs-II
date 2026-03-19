@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIIs App | Lista de FIIs</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <span class="brand-badge">F</span>
+      <div>
+        <h1>FIIs App</h1>
+        <small>Lista completa de FIIs</small>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./fiis.html" class="active">FIIs</a>
+      <a href="./carteira.html">Carteira</a>
+      <a href="./calendario.html">Calendário</a>
+      <a href="./login.html" id="nav-login-link">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <h2>Fundos Imobiliários</h2>
+      <p>Pesquise, filtre e favorite os FIIs da sua lista.</p>
+    </section>
+
+    <section class="toolbar toolbar-grid">
+      <input type="text" id="search-input" placeholder="Buscar por ticker ou nome" />
+
+      <select id="segment-filter">
+        <option value="">Todos os segmentos</option>
+      </select>
+
+      <select id="sort-filter">
+        <option value="ticker">Ordenar por ticker</option>
+        <option value="dy">Maior DY</option>
+        <option value="pvp">Menor P/VP</option>
+        <option value="price">Menor preço</option>
+      </select>
+    </section>
+
+    <section class="cards-grid" id="fiis-list"></section>
+  </main>
+
+  <footer class="footer">
+    <p>Use favoritos para marcar seus FIIs preferidos.</p>
+  </footer>
+
+  <script type="module" src="./js/fiis.js"></script>
+</body>
+</html>
